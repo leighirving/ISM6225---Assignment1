@@ -31,19 +31,19 @@ namespace Assignment1_Spring2020
         {
             try
             {
-                int counter = n;
+                int counter = n; 
 
-                while (counter> 0)
+                while (counter> 0) //counter keeps track of starting value per line
                 {
-                    while (n > 0)
+                    while (n > 0)  //outputs decrementing values of n on the same line
                     {
                         Console.Write("{0}", n);
-                        n--;
+                        n--; 
                     }
 
                     Console.WriteLine();
                     counter--;
-                    n = counter;
+                    n = counter; 
                 }
 
             }
