@@ -31,8 +31,23 @@ namespace Assignment1_Spring2020
         {
             try
             {
-                //Write your code here .!
+                int counter = n;
+
+                while (counter> 0)
+                {
+                    while (n > 0)
+                    {
+                        Console.Write("{0}", n);
+                        n--;
+                    }
+
+                    Console.WriteLine();
+                    counter--;
+                    n = counter;
+                }
+
             }
+
             catch
             {
                 Console.WriteLine("Exception Occured while computing printPattern");
