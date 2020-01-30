@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Assignment1_Spring2020
 {
@@ -57,10 +58,27 @@ namespace Assignment1_Spring2020
 
         private static void PrintSeries(int n2)
         {
+ 
+            
             try
             {
-                //Write your code here .!!
+                int i = 0;
+                int i2 = 1;
+
+                for (int counter2 = 0; counter2 < n2; counter2++) //counter keeps track of the number of terms to print
+                {
+
+                    int total = i + i2;
+                    Console.Write("{0}, ", total);
+                    
+                    i2++;
+                    i = total;
+                }
+
+
+
             }
+            
             catch
             {
                 Console.WriteLine("Exception Occured while computing printSeries");
