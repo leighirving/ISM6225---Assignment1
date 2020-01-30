@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 
 namespace Assignment1_Spring2020
 {
@@ -65,12 +64,15 @@ namespace Assignment1_Spring2020
                 int i = 0;
                 int i2 = 1;
 
+                string sep = "";
+
                 for (int counter2 = 0; counter2 < n2; counter2++) //counter keeps track of the number of terms to print
                 {
 
                     int total = i + i2;
-                    Console.Write("{0}, ", total);
-                    
+                    Console.Write(sep + "{0}", total);
+                    sep = ", ";
+
                     i2++;
                     i = total;
                 }
