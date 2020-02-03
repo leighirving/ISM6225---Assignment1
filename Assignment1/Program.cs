@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace Assignment1_Spring2020
 {
@@ -77,10 +78,10 @@ namespace Assignment1_Spring2020
                     i = total;
                 }
 
-
+                Console.WriteLine();
 
             }
-            
+
             catch
             {
                 Console.WriteLine("Exception Occured while computing printSeries");
@@ -92,7 +93,30 @@ namespace Assignment1_Spring2020
         {
             try
             {
-                //Write your code here .!!
+                DateTime s_time =  DateTime.ParseExact(s, "hh:mm:sstt", CultureInfo.InvariantCulture); //converts s to datetime format 
+
+
+                int earthSeconds = s_time.Second;
+                int earthMinuteSecs = s_time.Minute * 60; 
+                int earthHourSecs = s_time.Hour * 60 * 60; 
+
+                int totalEarthSecs = earthSeconds + earthMinuteSecs + earthHourSecs;
+
+                //int usfDaysSecs = totalEarthSecs / (36 * 60 * 45); //convert Earth seconds to USF days
+                
+                int usfHourSecs = totalEarthSecs / (60 * 45); //convert Earth seconds to USF hours
+
+                double earthSecsLeft = totalEarthSecs - (usfHourSecs * 60 * 45); //Get remaining seconds after subtracting number of hours
+
+                int usfMinuteSecs = (int) earthSecsLeft / 45; //convert Earth minutes to USF hours
+
+                int usfSeconds = (int) earthSecsLeft - (usfMinuteSecs * 45); //Get remaining seconds after subtracting number of minutes
+
+
+                Console.WriteLine(usfHourSecs + ":" + usfMinuteSecs + ":" + usfSeconds);
+                
+
+
             }
             catch
             {
