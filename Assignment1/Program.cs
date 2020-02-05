@@ -7,6 +7,7 @@ namespace Assignment1_Spring2020
     {
         static void Main(string[] args)
         {
+            
             int n = 5;
             PrintPattern(n);
 
@@ -16,7 +17,7 @@ namespace Assignment1_Spring2020
             string s = "09:15:35PM";
             string t = UsfTime(s);
             Console.WriteLine(t);
-
+            
             int n3 = 110;
             int k = 11;
             UsfNumbers(n3, k);
@@ -130,7 +131,50 @@ namespace Assignment1_Spring2020
         {
             try
             {
-                // Write your code here
+                for (int i = 1; i <= n3; i++) //loops through numbers 1 to n3
+                {
+                    if ((i % 3 == 0) & (i % 5 == 0))
+                    {
+                        Console.Write(" US");
+                    }
+
+                    else if ((i % 5 == 0) & (i % 7 == 0))
+                    {
+                        Console.Write(" SF");
+
+                    }
+                    else if ((i % 3 == 0) & (i % 7 == 0))
+                    {
+                        Console.Write(" UF");
+                    }
+                    else if (i % 3 == 0)
+                    {
+                        Console.Write(" U");
+                    }
+                    else if (i % 5 == 0)
+                    {
+                        Console.Write(" S");
+
+                    }
+                    else if (i % 7 == 0)
+                    {
+                        Console.Write(" F");
+
+                    }
+
+                    else
+                    {
+                        Console.Write(" " + i);
+
+                    }
+
+
+                    if (i % k == 0) //creates new line after printing k numbers
+                    {
+
+                        Console.WriteLine(" ");
+                    }
+                }
             }
             catch
             {
