@@ -34,6 +34,7 @@ namespace Assignment1_Spring2020
 
 
         private static void PrintPattern(int n)
+        /* This method prints number pattern of n integers using recursion */
         {
             try
             {
@@ -62,9 +63,10 @@ namespace Assignment1_Spring2020
 
 
         private static void PrintSeries(int n2)
+        /* This method prints the following series till n2 terms: 1, 3, 6, 10, 15, 21…… */
         {
- 
-            
+
+
             try
             {
                 int i = 0;
@@ -95,6 +97,11 @@ namespace Assignment1_Spring2020
 
 
         public static string UsfTime(string s)
+        /* On planet “USF” which is similar to that of Earth follows different clock where instead of hours they have U , instead of minutes they have S 
+        , instead of seconds they have F. Similar to earth where each day has 24 hours, each hour has 60 minutes and each minute has 60 seconds , 
+        USF planet’s day has 36 U , each U has 60 S and each S has 45 F. 
+        This method takes 12HR format s and prints a string representing input time in USF time format. */
+
         {
             try
             {
@@ -132,6 +139,10 @@ namespace Assignment1_Spring2020
 
 
         public static void UsfNumbers(int n3, int k)
+        /* This method prints the numbers 1 to n3, k numbers per line. 
+         * It prints 'U' in place of numbers which are multiple of 3, "S" for multiples of 5,"F" for multiples of 7, 'US' in place of numbers which are multiple of 3 and 5,
+         * 'SF' in place of numbers which are multiple of 5 and 7 and so on. */
+
         {
             try
             {
@@ -189,22 +200,31 @@ namespace Assignment1_Spring2020
 
 
         public static void PalindromePairs(string[] words)
+        /*This method takes a list of unique words and finds all the pairs of distinct indices (i,j) in the given list such that the concatenation of 
+         * two words i.e. words[i]+words[j] is a palindrome. */
+
         {
             try
-            {
-                
+        {
 
 
-                
-            }
-            catch
-            {
 
-                Console.WriteLine("Exception occured while computing PalindromePairs()");
-            }
+
         }
+        catch
+        {
 
-        public static void Stones(int n4)
+            Console.WriteLine("Exception occured while computing PalindromePairs()");
+        }
+    }
+
+    public static void Stones(int n4)
+    /*Two friends are playing a stone game. There are n4 number of stones in a bag, each time the players take turns and take out 1 to 3 stones. 
+     The player who takes out the last stone will be the winner. Player 1 will be the first player to remove the stone(s).
+
+     This method determines whether Player 1 can win the game given the number of stones in the bag. It prints false if Player 1 cannot win the game, 
+     otherwise prints any one set of moves where Player 1 wins the game. */
+
         {
 
 
