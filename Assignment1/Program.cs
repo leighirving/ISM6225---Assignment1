@@ -12,7 +12,7 @@ namespace Assignment1_Spring2020
             
             int n = 5;
             PrintPattern(n);
-
+            /*
             int n2 = 6;
             PrintSeries(n2);
 
@@ -28,7 +28,7 @@ namespace Assignment1_Spring2020
             PalindromePairs(words);
 
             Stones(5);
-
+            */
 
         }
 
@@ -37,20 +37,19 @@ namespace Assignment1_Spring2020
         /* This method prints number pattern of n integers using recursion */
         {
             try
-            {
-                int counter = n; 
-
-                while (counter> 0) //counter keeps track of starting value per line
+            {   
+                
+                if (n > 0)
                 {
-                    while (n > 0)  //outputs decrementing values of n on the same line
-                    {
-                        Console.Write("{0}", n);
-                        n--; 
-                    }
+                    string line = "";
 
-                    Console.WriteLine();
-                    counter--;
-                    n = counter; 
+                    for (int count = n;  count > 0; count--)
+                    {
+                        line += count;
+                    }
+                    Console.WriteLine(line);
+                    n--;
+                    PrintPattern(n);
                 }
 
             }
