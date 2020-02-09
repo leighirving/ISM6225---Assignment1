@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Globalization;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Assignment1_Spring2020
 {
@@ -21,9 +23,11 @@ namespace Assignment1_Spring2020
             int n3 = 110;
             int k = 11;
             UsfNumbers(n3, k);
-
+            
             string[] words = new string[] { "abcd", "dcba", "lls", "s", "sssll" };
             PalindromePairs(words);
+
+            Stones(5);
 
 
         }
@@ -188,25 +192,77 @@ namespace Assignment1_Spring2020
         {
             try
             {
-                // Write your code here
+                
+
+
+                
             }
             catch
             {
 
-                Console.WriteLine("Exception occured while computing     PalindromePairs()");
+                Console.WriteLine("Exception occured while computing PalindromePairs()");
             }
         }
 
         public static void Stones(int n4)
         {
+
+
             try
-            {
-                // Write your code here
-            }
-            catch
-            {
-                Console.WriteLine("Exception occured while computing Stones()");
-            }
+             {
+
+                 if (n4 <= 3)
+                 {
+                     int[] win = { n4 };
+                     Console.WriteLine("[{0}]", string.Join(", ", win));
+
+                 }
+                 else if (n4 % 4 == 0)
+                 {
+                     Console.WriteLine(false);
+                 }
+                 else
+                 {
+
+                    int startingNum = n4 % 4;
+                    int quotient = n4 / 4;
+
+                    List<int> wins = new List<int>();
+
+                    wins.Add(startingNum);
+
+                    printAnswer(quotient, wins);
+
+                    void printAnswer(int quotient, List<int> plays)
+                    {
+                        if (quotient == 0)
+                        {
+
+                            int[] solutions = plays.ToArray();
+                            Console.WriteLine("[{0}]", string.Join(", ", solutions));
+
+                        }
+                        else
+                        {
+                            List<int> sol1 = new List<int>() { 1, 3 };
+                            printAnswer(quotient - 1, plays.Concat(sol1).ToList());
+
+                            List<int> sol2 = new List<int>() { 2, 2 };
+                            printAnswer(quotient - 1, plays.Concat(sol2).ToList());
+
+                            IList<int> sol3 = new List<int>() { 3, 1 };
+                            printAnswer(quotient - 1, plays.Concat(sol3).ToList());
+
+                        }
+
+                    }
+
+                }
+             }
+             catch
+             {
+                 Console.WriteLine("Exception occured while computing Stones()");
+             }
         }
 
 
