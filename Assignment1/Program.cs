@@ -34,18 +34,18 @@ namespace Assignment1_Spring2020
 
 
         private static void PrintPattern(int n)
-        /* This method prints number pattern of n integers using recursion */
+        /* Prints number pattern of n integers using recursion */
         {
             try
             {   
                 
                 if (n > 0)
                 {
-                    string line = ""; //this will store the decrementing values per row
+                    string line = ""; //the decrementing values per row
 
                     for (int count = n;  count > 0; count--)
                     {
-                        line += count; //add value n to row
+                        line += count; //add each value decrement from n 
                     }
                     Console.WriteLine(line);
                     n--;
@@ -62,24 +62,20 @@ namespace Assignment1_Spring2020
 
 
         private static void PrintSeries(int n2)
-        /* This method prints the following series till n2 terms: 1, 3, 6, 10, 15, 21…… */
+        /* Prints the following series til n2 terms: 1, 3, 6, 10, 15, 21…… */
         {
             try
             {
                 int i = 0;
-                int i2 = 1;
-
                 string sep = "";
 
-                for (int counter2 = 0; counter2 < n2; counter2++) //counter keeps track of the number of terms to print
+                for (int counter = 0; counter < n2; counter++) //counter keeps track of the number of terms to print
                 {
-
-                    int total = i + i2;
+                    int total = i + counter + 1; //calculate next value in series
                     Console.Write(sep + "{0}", total);
                     sep = ", ";
 
-                    i2++;
-                    i = total;
+                    i = total; //set i to the next value in the series
                 }
 
                 Console.WriteLine();
@@ -102,7 +98,7 @@ namespace Assignment1_Spring2020
         {
             try
             {
-                DateTime s_time =  DateTime.ParseExact(s, "hh:mm:sstt", CultureInfo.InvariantCulture); //converts s to datetime format 
+                DateTime s_time =  DateTime.ParseExact(s, "hh:mm:sstt", CultureInfo.InvariantCulture); //converts 's' to datetime format 
 
 
                 int earthSeconds = s_time.Second;
@@ -110,8 +106,6 @@ namespace Assignment1_Spring2020
                 int earthHourSecs = s_time.Hour * 60 * 60; 
 
                 int totalEarthSecs = earthSeconds + earthMinuteSecs + earthHourSecs;
-
-                //int usfDaysSecs = totalEarthSecs / (36 * 60 * 45); //convert Earth seconds to USF days
                 
                 int usfHourSecs = totalEarthSecs / (60 * 45); //convert Earth seconds to USF hours
 
@@ -136,14 +130,15 @@ namespace Assignment1_Spring2020
 
 
         public static void UsfNumbers(int n3, int k)
-        /* This method prints the numbers 1 to n3, k numbers per line. 
-         * It prints 'U' in place of numbers which are multiple of 3, "S" for multiples of 5,"F" for multiples of 7, 'US' in place of numbers which are multiple of 3 and 5,
+        /* Prints the numbers 1 to n3, k numbers per line. 
+         * It prints 'U' in place of numbers which are multiple of 3, "S" for multiples of 5,"F" for multiples of 7, 
+         * 'US' in place of numbers which are multiple of 3 and 5,
          * 'SF' in place of numbers which are multiple of 5 and 7 and so on. */
 
         {
             try
             {
-                for (int i = 1; i <= n3; i++) //loops through numbers 1 to n3
+                for (int i = 1; i <= n3; i++) //loops through numbers 1 to n3 
                 {
                     if ((i % 3 == 0) & (i % 5 == 0))
                     {
@@ -195,9 +190,11 @@ namespace Assignment1_Spring2020
         }
 
         public static void PalindromePairs(string[] words)
+        /*Takes a list of unique words and finds all the pairs of distinct indices (i,j) in the given list such that the concatenation of 
+         * two words i.e. words[i]+words[j] is a palindrome. */
         {
 
-            static string ReverseString(string s)
+            static string ReverseString(string s) //create method to reverse a string
             {
                 char[] arr = s.ToCharArray();
                 Array.Reverse(arr);
@@ -209,14 +206,14 @@ namespace Assignment1_Spring2020
                 string result = "[";
                 string combination;
 
-                for(int n = 0; n<words.Length; n++)
+                for(int i = 0; i<words.Length; i++)
                 {
-                    for(int x = 0; x<words.Length; x++)
+                    for(int j = 0; j<words.Length; j++)
                     {
-                        combination = words[n] + words[x];
-                        if (combination == ReverseString(combination) && n != x)
-                        {
-                            result += "[" + n + "," + x + "],";
+                        combination = words[i] + words[j];
+                        if (combination == ReverseString(combination) && i !=j) //compare the current combination of words with its reverse
+                        {                                                        //if they match and this isnt a combination of a word with itself then
+                            result += "[" + i + "," + j + "],";                  //add it to the result list
                         }
                     }
                 }
@@ -232,43 +229,7 @@ namespace Assignment1_Spring2020
             }
 
         }
-        /*
-        public static void PalindromePairs(string[] words)
-        This method takes a list of unique words and finds all the pairs of distinct indices (i,j) in the given list such that the concatenation of 
-         * two words i.e. words[i]+words[j] is a palindrome. 
-
-        {
-            try
-            { 
-                foreach (string word in words)
-                {
-                    string rev = ReverseWord(word);
-                    if (words.Contains(rev))
-                    {
-                        int i = Array.IndexOf(words, word);
-                        int j = Array.IndexOf(words, rev);
-                        int[] concatWords = new int[2] { i, j };
-                        Console.WriteLine("[{0}]", string.Join(", ", concatWords));
-                    }
-                }
-
-                string ReverseWord(string s)
-                {
-                    char[] arr = s.ToCharArray();
-                    Array.Reverse(arr);
-                    return new string(arr);
-                }
-
-            }
-            catch
-            {
-
-                Console.WriteLine("Exception occured while computing PalindromePairs()");
-            }
-        }
-        */
-
-            public static void Stones(int n4)
+        public static void Stones(int n4)
         /*Two friends are playing a stone game. There are n4 number of stones in a bag, each time the players take turns and take out 1 to 3 stones. 
          The player who takes out the last stone will be the winner. Player 1 will be the first player to remove the stone(s).
 
@@ -295,7 +256,7 @@ namespace Assignment1_Spring2020
                  {
 
                     int startingNum = n4 % 4;
-                    int quotient = n4 / 4; 
+                    int quotient = n4 / 4; //set of [Player 1, Player 2] moves before Player 1 wins
 
                     List<int> moves = new List<int>();
 
@@ -309,13 +270,15 @@ namespace Assignment1_Spring2020
                         {
 
                             int[] solutions = plays.ToArray();
-                            Console.WriteLine("[{0}]", string.Join(", ", solutions));
+                            Console.WriteLine("[{0}]", string.Join(", ", solutions)); 
 
                         }
                         else
-                        {
+                        {    //since Player 1 wins whenever the given value is not a multiple of 4 all possible combinations 
+                            //that add up to 4 after removing the remainder are valid plays
+
                             List<int> sol1 = new List<int>() { 1, 3 };
-                            printAnswer(quotient - 1, plays.Concat(sol1).ToList());
+                            printAnswer(quotient - 1, plays.Concat(sol1).ToList()); 
 
                             List<int> sol2 = new List<int>() { 2, 2 };
                             printAnswer(quotient - 1, plays.Concat(sol2).ToList());
