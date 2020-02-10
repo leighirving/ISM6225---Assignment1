@@ -18,6 +18,10 @@ Q4)
 
 ![image](https://user-images.githubusercontent.com/19794073/74122116-089f6f00-4b98-11ea-8a31-39c8f0b0ddea.PNG)
 
+Q5)
+
+![image](https://user-images.githubusercontent.com/19794073/74126940-3b9d2f00-4ba7-11ea-848a-d3e2b21f4238.PNG)
+
 Q6)
 
 ![image](https://user-images.githubusercontent.com/19794073/74122125-105f1380-4b98-11ea-93e9-e1a86505dac3.PNG)
