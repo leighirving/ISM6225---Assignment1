@@ -5,6 +5,8 @@ using System.Linq;
 
 namespace Assignment1_Spring2020
 {
+    //Screenshots of the solutions are under the Issues tab on github
+
     class Program
     {
         static void Main(string[] args)
@@ -12,14 +14,14 @@ namespace Assignment1_Spring2020
             
             int n = 5;
             PrintPattern(n);
-            /*
+
             int n2 = 6;
             PrintSeries(n2);
 
             string s = "09:15:35PM";
             string t = UsfTime(s);
             Console.WriteLine(t);
-            
+
             int n3 = 110;
             int k = 11;
             UsfNumbers(n3, k);
@@ -28,7 +30,7 @@ namespace Assignment1_Spring2020
             PalindromePairs(words);
 
             Stones(5);
-            */
+            
 
         }
 
@@ -41,7 +43,7 @@ namespace Assignment1_Spring2020
                 
                 if (n > 0)
                 {
-                    string line = "";
+                    string line = ""; //this will store the decrementing values per row
 
                     for (int count = n;  count > 0; count--)
                     {
@@ -64,8 +66,6 @@ namespace Assignment1_Spring2020
         private static void PrintSeries(int n2)
         /* This method prints the following series till n2 terms: 1, 3, 6, 10, 15, 21…… */
         {
-
-
             try
             {
                 int i = 0;
@@ -196,61 +196,74 @@ namespace Assignment1_Spring2020
             }
         }
 
-
-
         public static void PalindromePairs(string[] words)
         /*This method takes a list of unique words and finds all the pairs of distinct indices (i,j) in the given list such that the concatenation of 
          * two words i.e. words[i]+words[j] is a palindrome. */
 
         {
             try
-        {
+            { 
+                foreach (string word in words)
+                {
+                    string rev = ReverseWord(word);
+                    if (words.Contains(rev))
+                    {
+                        int i = Array.IndexOf(words, word);
+                        int j = Array.IndexOf(words, rev);
+                        int[] concatWords = new int[2] { i, j };
+                        Console.WriteLine("[{0}]", string.Join(", ", concatWords));
+                    }
+                }
 
+                string ReverseWord(string s)
+                {
+                    char[] arr = s.ToCharArray();
+                    Array.Reverse(arr);
+                    return new string(arr);
+                }
 
+            }
+            catch
+            {
 
-
+                Console.WriteLine("Exception occured while computing PalindromePairs()");
+            }
         }
-        catch
-        {
 
-            Console.WriteLine("Exception occured while computing PalindromePairs()");
-        }
-    }
+            public static void Stones(int n4)
+        /*Two friends are playing a stone game. There are n4 number of stones in a bag, each time the players take turns and take out 1 to 3 stones. 
+         The player who takes out the last stone will be the winner. Player 1 will be the first player to remove the stone(s).
 
-    public static void Stones(int n4)
-    /*Two friends are playing a stone game. There are n4 number of stones in a bag, each time the players take turns and take out 1 to 3 stones. 
-     The player who takes out the last stone will be the winner. Player 1 will be the first player to remove the stone(s).
-
-     This method determines whether Player 1 can win the game given the number of stones in the bag. It prints false if Player 1 cannot win the game, 
-     otherwise prints any one set of moves where Player 1 wins the game. */
+         This method determines whether Player 1 can win the game given the number of stones in the bag. It prints false if Player 1 cannot win the game, 
+         otherwise prints any one set of moves where Player 1 wins the game. */
 
         {
-
-
             try
              {
-
                  if (n4 <= 3)
+                 //Player 1 wins since they can just choose 1, 2 or 3 to take all the stones.
                  {
                      int[] win = { n4 };
                      Console.WriteLine("[{0}]", string.Join(", ", win));
 
                  }
                  else if (n4 % 4 == 0)
-                 {
-                     Console.WriteLine(false);
+                //If n4 is divisible by 4 then whichever value Player 1 chooses, Player 2 will win as they have the option of choosing 
+                //1, 2 or 3 for the final stones.
+                {
+                    Console.WriteLine(false);
                  }
                  else
                  {
 
                     int startingNum = n4 % 4;
-                    int quotient = n4 / 4;
+                    int quotient = n4 / 4; 
 
-                    List<int> wins = new List<int>();
+                    List<int> moves = new List<int>();
 
-                    wins.Add(startingNum);
+                    moves.Add(startingNum);
 
-                    printAnswer(quotient, wins);
+                    printAnswer(quotient, moves);
 
                     void printAnswer(int quotient, List<int> plays)
                     {
