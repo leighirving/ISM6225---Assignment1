@@ -45,7 +45,7 @@ namespace Assignment1_Spring2020
 
                     for (int count = n;  count > 0; count--)
                     {
-                        line += count;
+                        line += count; //add value n to row
                     }
                     Console.WriteLine(line);
                     n--;
