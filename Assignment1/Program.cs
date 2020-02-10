@@ -5,8 +5,6 @@ using System.Linq;
 
 namespace Assignment1_Spring2020
 {
-    //Screenshots of the solutions are under the Issues tab on github
-
     class Program
     {
         static void Main(string[] args)
@@ -197,8 +195,47 @@ namespace Assignment1_Spring2020
         }
 
         public static void PalindromePairs(string[] words)
-        /*This method takes a list of unique words and finds all the pairs of distinct indices (i,j) in the given list such that the concatenation of 
-         * two words i.e. words[i]+words[j] is a palindrome. */
+        {
+
+            static string ReverseString(string s)
+            {
+                char[] arr = s.ToCharArray();
+                Array.Reverse(arr);
+                return new string(arr);
+            }
+
+            try
+            {
+                string result = "[";
+                string combination;
+
+                for(int n = 0; n<words.Length; n++)
+                {
+                    for(int x = 0; x<words.Length; x++)
+                    {
+                        combination = words[n] + words[x];
+                        if (combination == ReverseString(combination) && n != x)
+                        {
+                            result += "[" + n + "," + x + "],";
+                        }
+                    }
+                }
+
+                result  = result.Remove(result.Length - 1, 1);
+                result += "]";
+                Console.WriteLine(result);
+
+            }catch
+            { 
+
+                Console.WriteLine("Exception occured while computing PalindromePairs()");
+            }
+
+        }
+        /*
+        public static void PalindromePairs(string[] words)
+        This method takes a list of unique words and finds all the pairs of distinct indices (i,j) in the given list such that the concatenation of 
+         * two words i.e. words[i]+words[j] is a palindrome. 
 
         {
             try
@@ -229,6 +266,7 @@ namespace Assignment1_Spring2020
                 Console.WriteLine("Exception occured while computing PalindromePairs()");
             }
         }
+        */
 
             public static void Stones(int n4)
         /*Two friends are playing a stone game. There are n4 number of stones in a bag, each time the players take turns and take out 1 to 3 stones. 
